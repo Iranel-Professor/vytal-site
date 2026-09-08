@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vytal+ — plataforma SaaS para gestão de saúde, segurança, qualidade de vida, ergonomia e fatores psicossociais nas empresas.">
+  <title>Vytal+ | Sua empresa mais saudável, inteligente e preparada</title>
+  <link rel="icon" href="assets/vytal-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#06152f; --navy2:#0a2147; --blue:#1677ff; --cyan:#10c9ff;
+      --green:#37d66b; --lime:#8eea3b; --yellow:#ffc928; --text:#10213e;
+      --muted:#65748b; --light:#f5f8fc; --white:#fff; --border:#e4eaf2;
+      --shadow:0 18px 50px rgba(6,21,47,.10); --radius:20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;color:var(--text);background:#fff;line-height:1.55}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1160px,92%);margin:auto}
+    .topbar{background:#041025;color:#b9c9df;font-size:12px;padding:8px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:20px}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid rgba(228,234,242,.85)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand img{width:150px;height:auto;display:block}
+    .navlinks{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600;color:#34445c}
+    .navlinks a:hover{color:var(--blue)}
+    .navcta{background:linear-gradient(100deg,var(--blue),#3266ff);color:#fff!important;padding:12px 18px;border-radius:12px;box-shadow:0 8px 20px rgba(22,119,255,.22)}
+    .menu{display:none;border:0;background:none;font-size:28px;color:var(--navy)}
+    .hero{position:relative;overflow:hidden;background:
+      radial-gradient(circle at 88% 12%,rgba(16,201,255,.16),transparent 28%),
+      radial-gradient(circle at 78% 82%,rgba(55,214,107,.10),transparent 25%),
+      linear-gradient(135deg,#041126 0%,#071c3b 62%,#06152f 100%);color:#fff;padding:92px 0 84px}
+    .hero:after{content:"";position:absolute;width:620px;height:260px;right:-160px;top:-80px;border:1px solid rgba(16,201,255,.55);border-left-color:transparent;border-bottom-color:rgba(55,214,107,.7);border-radius:50%;transform:rotate(17deg);box-shadow:0 0 28px rgba(16,201,255,.22)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#dce9fb;margin-bottom:20px}
+    .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+    h1{font-size:clamp(42px,5.3vw,70px);line-height:1.02;letter-spacing:-.055em;margin-bottom:22px}
+    .gradient-text{background:linear-gradient(90deg,#fff,#55cfff,#68e778);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:18px;color:#c6d3e7;max-width:650px;margin-bottom:30px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:12px;font-weight:700;font-size:14px;transition:.2s}
+    .btn-primary{background:linear-gradient(100deg,var(--blue),#3567ff);color:#fff;box-shadow:0 10px 28px rgba(22,119,255,.28)}
+    .btn-secondary{border:1px solid rgba(255,255,255,.2);color:#fff;background:rgba(255,255,255,.06)}
+    .btn:hover{transform:translateY(-2px)}
+    .hero-note{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap;color:#aebed3;font-size:12px}
+    .hero-note strong{color:#fff;font-size:18px;display:block}
+    .dashboard-wrap{background:rgba(255,255,255,.08);padding:10px;border:1px solid rgba(255,255,255,.14);border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.28)}
+    .dashboard-wrap img{display:block;width:100%;border-radius:15px}
+    .trust{padding:22px 0;border-bottom:1px solid var(--border);background:#fff}
+    .trust-row{display:flex;justify-content:center;gap:42px;flex-wrap:wrap;color:#6d7b90;font-size:12px;font-weight:600}
+    section{padding:88px 0}
+    .section-head{max-width:760px;margin-bottom:42px}
+    .kicker{color:var(--blue);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.11em;margin-bottom:10px}
+    h2{font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.04em;margin-bottom:14px}
+    .section-head p{color:var(--muted);font-size:16px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{border:1px solid var(--border);border-radius:var(--radius);padding:24px;background:#fff;box-shadow:0 8px 30px rgba(10,33,71,.05)}
+    .icon{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;font-size:21px}
+    .icon.blue{background:#eaf3ff;color:var(--blue)} .icon.green{background:#e9fbf0;color:#11a84b}
+    .icon.yellow{background:#fff7db;color:#b88200} .icon.purple{background:#f0eaff;color:#7042e8}
+    .card h3{font-size:17px;margin-bottom:8px}.card p{font-size:13px;color:var(--muted)}
+    .dark-section{background:linear-gradient(135deg,#05132c,#09244b);color:#fff;position:relative;overflow:hidden}
+    .dark-section .section-head p{color:#b9c8dd}.dark-section .kicker{color:#56d7ff}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .feature{padding:26px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);border-radius:18px}
+    .feature h3{font-size:18px;margin-bottom:8px}.feature p{font-size:14px;color:#b7c6db}
+    .feature span{font-size:12px;color:#6de07d;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:22px;overflow:hidden}
+    .step{padding:28px;background:#fff;position:relative;border-right:1px solid var(--border)}.step:last-child{border-right:0}
+    .step-num{font-size:12px;color:var(--blue);font-weight:800;margin-bottom:14px}.step h3{font-size:18px;margin-bottom:8px}.step p{font-size:13px;color:var(--muted)}
+    .step:after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:20px;height:20px;background:#fff;border:1px solid var(--border);border-radius:50%;display:grid;place-items:center;color:var(--blue);font-size:11px;z-index:2}
+    .step:last-child:after{display:none}
+    .metrics{background:var(--light)}
+    .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .metric{background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px}
+    .metric .value{font-size:34px;font-weight:800;letter-spacing:-.04em}.metric .label{font-weight:700;font-size:13px;margin-top:4px}.metric p{color:var(--muted);font-size:12px;margin-top:8px}
+    .compliance{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .checklist{display:grid;gap:11px;margin-top:24px}.check{display:flex;gap:12px;align-items:flex-start;font-size:14px}.check b{color:var(--green);font-size:17px}
+    .panel{background:linear-gradient(145deg,#07162f,#0a2852);color:#fff;border-radius:24px;padding:32px;box-shadow:var(--shadow)}
+    .panel h3{font-size:24px;margin-bottom:10px}.panel p{color:#b8c8de;font-size:14px}.panel ul{margin-top:22px;display:grid;gap:12px;list-style:none}.panel li{display:flex;gap:10px;font-size:13px}.panel li span{color:#66e27a}
+    .modules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .module{padding:24px;border-radius:18px;border:1px solid var(--border);background:#fff}.module h3{margin:12px 0 6px;font-size:17px}.module p{font-size:13px;color:var(--muted)}
+    .cta{padding:74px 0}.cta-box{border-radius:26px;padding:54px;background:linear-gradient(110deg,#07152f,#0b2e61);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:35px;position:relative;overflow:hidden}.cta-box:after{content:"";position:absolute;width:400px;height:400px;border:1px solid rgba(16,201,255,.3);border-radius:50%;right:-180px;top:-220px}.cta-box h2{max-width:700px;margin-bottom:10px}.cta-box p{color:#bac9dc;max-width:650px}.cta-box .buttons{position:relative;z-index:1;flex-shrink:0}
+    .contact{background:var(--light)}.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px}.contact-info,.form{background:#fff;border:1px solid var(--border);border-radius:22px;padding:30px}.contact-info h3,.form h3{font-size:22px;margin-bottom:8px}.contact-info p{color:var(--muted);font-size:14px}.contact-list{display:grid;gap:18px;margin-top:28px}.contact-item small{display:block;color:#8190a5;font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:.06em}.contact-item strong{font-size:14px}
+    form{display:grid;gap:13px;margin-top:20px}.row{display:grid;grid-template-columns:1fr 1fr;gap:13px}label{font-size:12px;font-weight:700;color:#40506a;display:grid;gap:6px}input,textarea,select{width:100%;border:1px solid #dbe3ee;border-radius:10px;padding:12px 13px;font:inherit;font-size:13px;outline:none;background:#fff}textarea{min-height:120px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#8bb9ff;box-shadow:0 0 0 3px #eaf3ff}
+    footer{background:#041025;color:#a9bad1;padding:34px 0 22px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-brand img{width:145px;filter:brightness(0) invert(1);opacity:.95}.footer p{font-size:12px;margin-top:13px;max-width:320px}.footer h4{color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:13px}.footer a{display:block;font-size:12px;margin:8px 0;color:#a9bad1}.copyright{border-top:1px solid rgba(255,255,255,.09);margin-top:28px;padding-top:18px;font-size:11px;display:flex;justify-content:space-between;gap:15px}
+    @media(max-width:900px){.navlinks{display:none}.menu{display:block}.hero-grid,.compliance,.contact-grid{grid-template-columns:1fr}.cards,.metric-grid{grid-template-columns:repeat(2,1fr)}.modules{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:1fr 1fr}.step{border-bottom:1px solid var(--border)}.step:nth-child(2){border-right:0}.step:nth-child(2):after{display:none}.cta-box{flex-direction:column;align-items:flex-start}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.topbar{display:none}nav{height:68px}.brand img{width:125px}.hero{padding:64px 0}.hero p{font-size:16px}.cards,.metric-grid,.modules,.process{grid-template-columns:1fr}.step{border-right:0}.step:after{display:none}.row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.copyright{flex-direction:column}.cta-box{padding:34px}.dashboard-wrap{padding:6px}section{padding:68px 0}}
+  </style>
+<style>
+.problem-premium{background:#f6f9fd}.problem-premium .pp-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:55px;align-items:center}.problem-premium .pain{background:#fff;border:1px solid #e2e9f2;border-radius:16px;padding:17px 18px;margin:10px 0;display:flex;gap:13px;box-shadow:0 6px 22px rgba(5,24,55,.04)}.problem-premium .pain i{font-style:normal;background:#fff0f0;color:#d94b4b;border-radius:8px;width:28px;height:28px;display:grid;place-items:center;font-weight:900;flex:none}.problem-premium .pain b{font-size:13px}.problem-premium .pain span{display:block;color:#65748a;font-size:11px;margin-top:2px}.premium-banner{background:linear-gradient(110deg,#06142d,#0b2f61);color:#fff;border-radius:25px;padding:34px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;margin-top:30px}.premium-banner p{color:#b8c9dd;font-size:13px;max-width:700px}.premium-banner .mini{font-size:11px;color:#65e17b;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}@media(max-width:900px){.problem-premium .pp-grid{grid-template-columns:1fr}.premium-banner{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body>
+  <div class="topbar"><div class="container"><span>Vytal+ • SaaS Compliance & Qualidade de Vida</span><span>Medir. Analisar. Agir. Comprovar.</span></div></div>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#inicio"><img src="assets/vytal-logo.png" alt="Vytal+"></a>
+        <div class="navlinks">
+          <a href="#solucao">A solução</a><a href="#modulos">Módulos</a><a href="#metodologia">Metodologia</a>
+          <a href="#conformidade">Conformidade</a><a href="#contato">Contato</a><a class="navcta" href="#contato">Solicitar demonstração</a>
+        </div>
+        <button class="menu" aria-label="Abrir menu" onclick="toggleMenu()">☰</button>
+      </nav>
+      <div id="mobileMenu" style="display:none;padding:0 0 18px;gap:14px;flex-direction:column;font-weight:600;font-size:14px">
+        <a href="#solucao">A solução</a><a href="#modulos">Módulos</a><a href="#metodologia">Metodologia</a><a href="#conformidade">Conformidade</a><a href="#contato">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><i></i> Gestão inteligente para empresas</div>
+          <h1>O cuidado com as pessoas começa com <span class="gradient-text">dados.</span></h1>
+          <p>O Vytal+ transforma avaliações, indicadores e participação em uma estratégia contínua de saúde, segurança, ergonomia, fatores psicossociais e qualidade de vida.</p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="#contato">Quero conhecer o Vytal+ →</a>
+            <a class="btn btn-secondary" href="#solucao">Conheça a plataforma</a>
+          </div>
+          <div class="hero-note">
+            <div><strong>1 plataforma</strong> para integrar informações</div>
+            <div><strong>Dados + ações</strong> em um único fluxo</div>
+            <div><strong>Visão executiva</strong> para gestão</div>
+          </div>
+        </div>
+        <div class="dashboard-wrap"><img src="assets/vytal-dashboard.jpg" alt="Dashboard Vytal+ com indicadores de risco psicossocial, clima, ergonomia e bem-estar"></div>
+      </div>
+    </section>
+
+    <div class="trust"><div class="container trust-row"><span>SAÚDE</span><span>SEGURANÇA</span><span>ERGONOMIA</span><span>FATORES PSICOSSOCIAIS</span><span>QUALIDADE DE VIDA</span><span>ENGAJAMENTO</span></div></div>
+
+    <section class="problem-premium">
+<div class="container pp-grid">
+<div><div class="kicker">O desafio das empresas</div><h2>Informação existe. O que falta é transformar informação em gestão.</h2><p style="color:#65748a;font-size:15px;margin-top:15px">Quando avaliações, treinamentos, ações e documentos ficam separados, a gestão perde velocidade, histórico e visão de prioridade.</p><div class="premium-banner"><div><div class="mini">Vytal+</div><strong style="font-size:20px">Medir. Analisar. Agir. Comprovar.</strong><p style="margin-top:7px">Um ciclo contínuo para colocar prevenção no centro da estratégia.</p></div><a class="btn btn-primary" href="#contato">Conhecer →</a></div></div>
+<div>
+<div class="pain"><i>!</i><div><b>Dados espalhados</b><span>Planilhas, formulários e documentos sem uma visão única.</span></div></div>
+<div class="pain"><i>!</i><div><b>Ações sem acompanhamento</b><span>Prioridades, responsáveis e prazos podem se perder no caminho.</span></div></div>
+<div class="pain"><i>!</i><div><b>Baixo engajamento</b><span>Participação pontual não cria uma cultura contínua de prevenção.</span></div></div>
+<div class="pain"><i>!</i><div><b>Evidências difíceis de organizar</b><span>Registros precisam estar disponíveis para acompanhamento e gestão.</span></div></div>
+</div></div>
+</section>
+<section id="solucao">
+      <div class="container">
+        <div class="section-head"><div class="kicker">O problema</div><h2>Sua empresa sabe onde estão os riscos — ou apenas reage quando eles aparecem?</h2><p>O Vytal+ foi pensado para transformar informações dispersas em uma jornada contínua de diagnóstico, prevenção, acompanhamento e comprovação.</p></div>
+        <div class="cards">
+          <article class="card"><div class="icon purple">🧠</div><h3>Fatores psicossociais</h3><p>Avaliação estruturada, indicadores, identificação de pontos de atenção e direcionamento para ações preventivas.</p></article>
+          <article class="card"><div class="icon blue">◉</div><h3>Ergonomia</h3><p>Mapeamento de desconfortos, percepção ergonômica, acompanhamento e ações relacionadas à NR-17.</p></article>
+          <article class="card"><div class="icon green">♧</div><h3>Qualidade de vida</h3><p>Hábitos de vida, prontidão para atividade, conteúdos, treinamentos e estímulos para uma rotina mais saudável.</p></article>
+          <article class="card"><div class="icon yellow">♡</div><h3>Engajamento</h3><p>Pontos, ranking, desafios e comunicação para transformar participação em comportamento contínuo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="modulos">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Ecossistema Vytal+</div><h2>Tudo o que a empresa precisa para colocar prevenção em movimento.</h2><p>Uma plataforma modular para conectar pessoas, indicadores, programas, treinamentos e evidências.</p></div>
+        <div class="feature-grid">
+          <div class="feature"><span>01 • Diagnóstico</span><h3>Avaliação Psicossocial</h3><p>Questionários, indicadores e leitura dos fatores de risco psicossocial, com visão individual e consolidada.</p></div>
+          <div class="feature"><span>02 • Saúde</span><h3>Avaliação Biométrica</h3><p>Registro e acompanhamento de indicadores biométricos para apoiar programas de saúde e qualidade de vida.</p></div>
+          <div class="feature"><span>03 • Movimento</span><h3>Treinamentos e Treinos</h3><p>Conteúdos digitais, trilhas, treinos para diferentes ambientes e orientações de execução.</p></div>
+          <div class="feature"><span>04 • Prevenção</span><h3>Ginástica Laboral</h3><p>Vídeos e rotinas de pausas ativas para apoiar prevenção, mobilidade e bem-estar no trabalho.</p></div>
+          <div class="feature"><span>05 • Gestão</span><h3>Planos de Ação</h3><p>Biblioteca de ações, responsáveis, prioridades, prazos, status e acompanhamento da execução.</p></div>
+          <div class="feature"><span>06 • Evidências</span><h3>Relatórios e Auditoria</h3><p>Organização de indicadores, registros e evidências para dar rastreabilidade à gestão.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodologia">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Nossa metodologia</div><h2>Medir. Interpretar. Agir. Comprovar.</h2><p>Um ciclo simples para transformar diagnóstico em gestão contínua.</p></div>
+        <div class="process">
+          <div class="step"><div class="step-num">01 • MEDIR</div><h3>Coletar</h3><p>Aplicar avaliações, pesquisas e registros de forma organizada.</p></div>
+          <div class="step"><div class="step-num">02 • INTERPRETAR</div><h3>Entender</h3><p>Consolidar indicadores e identificar prioridades e tendências.</p></div>
+          <div class="step"><div class="step-num">03 • AGIR</div><h3>Prevenir</h3><p>Direcionar trilhas, treinamentos e planos de ação.</p></div>
+          <div class="step"><div class="step-num">04 • COMPROVAR</div><h3>Acompanhar</h3><p>Registrar execução, resultados e evidências ao longo do tempo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Visão executiva</div><h2>Indicadores que ajudam a gestão a enxergar o que realmente importa.</h2><p>Dashboards e relatórios organizam a informação para facilitar priorização, acompanhamento e tomada de decisão.</p></div>
+        <div class="metric-grid">
+          <div class="metric"><div class="value">IRP</div><div class="label">Risco Psicossocial</div><p>Indicador para leitura consolidada dos fatores avaliados.</p></div>
+          <div class="metric"><div class="value">Clima</div><div class="label">Clima Organizacional</div><p>Percepção das pessoas sobre o ambiente e a organização.</p></div>
+          <div class="metric"><div class="value">NR-17</div><div class="label">Ergonomia</div><p>Indicadores relacionados a desconforto e percepção ergonômica.</p></div>
+          <div class="metric"><div class="value">QV</div><div class="label">Bem-estar</div><p>Visão integrada de hábitos, participação e qualidade de vida.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conformidade">
+      <div class="container compliance">
+        <div>
+          <div class="kicker">Conformidade orientada por evidências</div>
+          <h2>Mais organização para a gestão de SST.</h2>
+          <p style="color:var(--muted);font-size:16px">O Vytal+ apoia a empresa na organização de informações, ações e evidências relacionadas aos seus programas de saúde, segurança, ergonomia e fatores psicossociais.</p>
+          <div class="checklist">
+            <div class="check"><b>✓</b><span>Rastreabilidade das avaliações e participações.</span></div>
+            <div class="check"><b>✓</b><span>Planos de ação com prioridade, responsável, prazo e status.</span></div>
+            <div class="check"><b>✓</b><span>Registros de treinamentos e conteúdos disponibilizados.</span></div>
+            <div class="check"><b>✓</b><span>Organização de evidências e relatórios gerenciais.</span></div>
+            <div class="check"><b>✓</b><span>Histórico para acompanhamento da evolução dos indicadores.</span></div>
+          </div>
+        </div>
+        <div class="panel"><h3>Compliance não é só documento.</h3><p>É um processo contínuo de identificar, priorizar, agir e registrar.</p><ul><li><span>●</span> Diagnóstico e indicadores</li><li><span>●</span> Priorização de riscos e oportunidades</li><li><span>●</span> Ações preventivas e educativas</li><li><span>●</span> Evidências e histórico</li><li><span>●</span> Visão para gestores e equipes</li></ul></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div class="kicker">Experiência dentro do app</div><h2>Uma jornada que também engaja as pessoas.</h2><p>Além da gestão, o Vytal+ leva conteúdo e participação para a rotina dos colaboradores.</p></div>
+        <div class="modules">
+          <div class="module"><div class="icon blue">🏆</div><h3>Ranking & Pontos</h3><p>Gamificação para estimular participação em avaliações, conteúdos e ações.</p></div>
+          <div class="module"><div class="icon green">💬</div><h3>Vytal Connection</h3><p>Mural de comunicação e conexão para aproximar empresa e colaboradores.</p></div>
+          <div class="module"><div class="icon purple">📚</div><h3>Universidade Corporativa</h3><p>Trilhas de aprendizagem, palestras, treinamentos e conteúdos educativos.</p></div>
+          <div class="module"><div class="icon yellow">📋</div><h3>Biblioteca de Ações</h3><p>Modelos e planos de ação para acelerar a resposta aos principais achados.</p></div>
+          <div class="module"><div class="icon blue">📊</div><h3>Vytal Analytics</h3><p>Leituras consolidadas para acompanhar indicadores e evolução.</p></div>
+          <div class="module"><div class="icon green">🛡</div><h3>Cadernos de SST</h3><p>Centralização de informações e documentos importantes para a gestão.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container"><div class="cta-box"><div><div class="kicker" style="color:#56d7ff">Próximo passo</div><h2>Veja como o Vytal+ pode funcionar na prática na sua empresa.</h2><p>Solicite uma apresentação e conheça o fluxo completo: diagnóstico, indicadores, ações, engajamento e evidências.</p></div><div class="buttons"><a class="btn btn-primary" href="#contato">Agendar demonstração →</a></div></div></div>
+    </section>
+
+    <section class="sales-strip" style="padding:25px 0;background:#fff;border-top:1px solid #e2e9f2;border-bottom:1px solid #e2e9f2"><div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:25px;flex-wrap:wrap"><div><strong style="font-size:18px">Pronto para enxergar sua gestão por outro ângulo?</strong><div style="font-size:12px;color:#65748a;margin-top:3px">Solicite uma demonstração e veja o Vytal+ funcionando na prática.</div></div><a class="btn btn-primary" href="#contato">Agendar demonstração →</a></div></section>
+<section class="contact" id="contato">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Fale com a Vytal+</div><h2>Vamos conversar sobre a sua empresa?</h2><p>Preencha o formulário e nossa equipe poderá apresentar a plataforma e entender o cenário da sua organização.</p></div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Contato comercial</h3><p>Espaço preparado para telefone, WhatsApp, e-mail e demais canais oficiais.</p>
+            <div class="contact-list">
+              <div class="contact-item"><small>WhatsApp</small><strong>+55 (00) 00000-0000</strong></div>
+              <div class="contact-item"><small>E-mail</small><strong>comercial@vytalmais.com.br</strong></div>
+              <div class="contact-item"><small>Atendimento</small><strong>Segunda a sexta • horário comercial</strong></div>
+            </div>
+          </div>
+          <div class="form">
+            <h3>Solicite uma demonstração</h3>
+            <form onsubmit="sendForm(event)">
+              <div class="row"><label>Nome<input required name="nome" placeholder="Seu nome"></label><label>Empresa<input required name="empresa" placeholder="Nome da empresa"></label></div>
+              <div class="row"><label>E-mail<input required type="email" name="email" placeholder="voce@empresa.com"></label><label>WhatsApp<input name="telefone" placeholder="(00) 00000-0000"></label></div>
+              <label>Assunto<select name="assunto"><option>Demonstração do Vytal+</option><option>Proposta comercial</option><option>Parceria</option><option>Outro</option></select></label>
+              <label>Mensagem<textarea name="mensagem" placeholder="Conte brevemente o que você gostaria de conhecer."></textarea></label>
+              <button class="btn btn-primary" type="submit">Enviar solicitação →</button>
+              <small style="color:#8190a5;font-size:10px">Ao enviar, você concorda em ser contatado sobre a solicitação. Ajuste este texto conforme sua política de privacidade/LGPD.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand"><img src="assets/vytal-logo.png" alt="Vytal+"><p>Solução em qualidade de vida. Uma plataforma para transformar dados em decisões e prevenção.</p></div>
+      <div><h4>Plataforma</h4><a href="#solucao">A solução</a><a href="#modulos">Módulos</a><a href="#metodologia">Metodologia</a></div>
+      <div><h4>Gestão</h4><a href="#conformidade">Conformidade</a><a href="#modulos">Relatórios</a><a href="#modulos">Evidências</a></div>
+      <div><h4>Empresa</h4><a href="#contato">Contato</a><a href="#">Privacidade</a><a href="#">Termos de uso</a></div>
+    </div>
+    <div class="container copyright"><span>© 2026 Vytal+. Todos os direitos reservados.</span><span>Medir. Analisar. Agir. Comprovar.</span></div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const m=document.getElementById('mobileMenu');
+      m.style.display = m.style.display==='flex' ? 'none' : 'flex';
+    }
+    function sendForm(e){
+      e.preventDefault();
+      alert('Formulário demonstrativo: conecte este envio ao seu e-mail, CRM ou WhatsApp antes da publicação.');
+    }
+  </script>
+</body>
+</html>
