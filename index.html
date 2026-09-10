@@ -294,14 +294,14 @@
 
     const form = event.target;
 
-    const dados = {
-      nome: form.nome.value,
-      empresa: form.empresa.value,
-      email: form.email.value,
-      telefone: form.telefone.value,
-      assunto: form.assunto.value,
-      mensagem: form.mensagem.value
-    };
+   const dados = {
+    nome: form.nome.value,
+    empresa: form.empresa.value,
+    email: form.email.value,
+    telefone: form.telefone.value,
+    interesse: form.assunto.value,
+    observacoes: form.mensagem.value
+};
               const { error } = await supabaseClient
             .from('leads')
             .insert([dados]);
