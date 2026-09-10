@@ -306,15 +306,18 @@
             .from('leads')
             .insert([dados]);
 
-        if (error) {
-            console.error('Erro ao salvar lead:', error);
-            alert('Não foi possível enviar sua solicitação. Tente novamente.');
-            return;
-        }
 
-        alert('Solicitação enviada com sucesso!');
-        form.reset();
-    }
-    </script>
+
+if (error) {
+  console.error('ERRO SUPABASE:', error);
+  alert(
+    'ERRO AO ENVIAR:\n\n' +
+    'Mensagem: ' + error.message + '\n' +
+    'Código: ' + error.code + '\n' +
+    'Detalhes: ' + (error.details || 'N/A') + '\n' +
+    'Dica: ' + (error.hint || 'N/A')
+  );
+  return;
+}
    
   
