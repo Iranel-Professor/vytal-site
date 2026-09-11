@@ -319,7 +319,7 @@ async function sendForm(event) {
         const { data, error } = await supabaseClient
             .from('leads')
             .insert([dados])
-            .select();
+      
 
         if (error) {
 
