@@ -279,45 +279,92 @@
     }
     </script>
   
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    const SUPABASE_URL = 'https://vsvloxtnoymhlgragvep.supabase.co';
-    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_oEWwwPhf_JnJmu1Z3W_xYQ_iyXYof0X';
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    const supabaseClient = supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
-     
-    async function sendForm(event) {
+<script>
+const SUPABASE_URL = 'https://vsvloxtnoymhlgragvep.supabase.co';
+
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_oEWwwPhf_JnJmu1Z3W_xYQ_iyXYof0X';
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+async function sendForm(event) {
+
     event.preventDefault();
 
     const form = event.target;
+    const botao = form.querySelector('button[type="submit"]');
 
-   const dados = {
-    nome: form.nome.value,
-    empresa: form.empresa.value,
-    email: form.email.value,
-    telefone: form.telefone.value,
-    interesse: form.assunto.value,
-    observacoes: form.mensagem.value
-};
-              const { error } = await supabaseClient
+    if (botao) {
+        botao.disabled = true;
+        botao.textContent = 'Enviando...';
+    }
+
+    const dados = {
+        nome: form.nome.value.trim(),
+        empresa: form.empresa.value.trim(),
+        email: form.email.value.trim(),
+        telefone: form.telefone.value.trim(),
+        interesse: form.assunto.value,
+        observacoes: form.mensagem.value.trim()
+    };
+
+    console.log('Dados que serão enviados:', dados);
+
+    try {
+
+        const { data, error } = await supabaseClient
             .from('leads')
-            .insert([dados]);
+            .insert([dados])
+            .select();
 
+        if (error) {
 
+            console.error('ERRO SUPABASE:', error);
 
-if (error) {
-  console.error('ERRO SUPABASE:', error);
-  alert(
-    'ERRO AO ENVIAR:\n\n' +
-    'Mensagem: ' + error.message + '\n' +
-    'Código: ' + error.code + '\n' +
-    'Detalhes: ' + (error.details || 'N/A') + '\n' +
-    'Dica: ' + (error.hint || 'N/A')
-  );
-  return;
+            alert(
+                'ERRO AO ENVIAR SOLICITAÇÃO\n\n' +
+                'Mensagem: ' + (error.message || 'N/A') + '\n' +
+                'Código: ' + (error.code || 'N/A') + '\n' +
+                'Detalhes: ' + (error.details || 'N/A') + '\n' +
+                'Dica: ' + (error.hint || 'N/A')
+            );
+
+            if (botao) {
+                botao.disabled = false;
+                botao.textContent = 'Enviar solicitação →';
+            }
+
+            return;
+        }
+
+        console.log('LEAD SALVO COM SUCESSO:', data);
+
+        alert(
+            'Solicitação enviada com sucesso! ' +
+            'Entraremos em contato em breve.'
+        );
+
+        form.reset();
+
+    } catch (erro) {
+
+        console.error('ERRO INESPERADO:', erro);
+
+        alert(
+            'Ocorreu um erro ao enviar sua solicitação.\n\n' +
+            (erro.message || erro)
+        );
+
+    } finally {
+
+        if (botao) {
+            botao.disabled = false;
+            botao.textContent = 'Enviar solicitação →';
+        }
+    }
 }
-   
-  
+</script>
